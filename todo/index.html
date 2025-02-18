@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do App</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .task { display: flex; justify-content: space-between; padding: 10px; border: 1px solid #ccc; margin: 5px 0; }
+        .buttons { display: flex; gap: 5px; }
+        .completed { text-decoration: line-through; color: green; }
+    </style>
+</head>
+<body>
+    <h2>To-Do App</h2>
+    <input type="text" id="taskName" placeholder="Task Name">
+    <input type="text" id="taskDesc" placeholder="Task Description">
+    <button onclick="addTask()">Add Task</button>
+    
+    <h3>Pending Tasks</h3>
+    <div id="taskList"></div>
+    
+    <h3>Completed Tasks</h3>
+    <div id="completedList"></div>
+
+    <script src="index.js"></script>
+</body>
+</html>
