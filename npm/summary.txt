@@ -1,0 +1,12 @@
+package.json: A file that keeps track of the project's settings, dependencies, and scripts.  
+nodemon: A tool that restarts the server automatically when you make code changes.  
+To install nodemon globally: Use npm install -g nodemon.  
+Scripts in package.json: Defined in the "scripts" section to run commands.  
+Installing a regular dependency: Use npm install <package-name>.  
+Dependencies vs. DevDependencies:  
+Dependencies: Needed for the app to work.  
+DevDependencies: Only needed during development (e.g., testing tools).  
+npm install --production: Installs only production dependencies and skips dev dependencies.  
+Installing a dev dependency: Use npm install <package-name> --save-dev.  
+Uninstalling a package: Use npm uninstall <package-name>.  
+Not a default field in package.json: "devDependencies" is not created automatically when running npm init.  
