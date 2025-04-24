@@ -1,0 +1,111 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <!-- Include Axios from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            padding: 8px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #response {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add New Product</h1>
+    
+    <form id="productForm">
+        <div>
+            <label for="name">Product Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div>
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" step="0.01" required>
+        </div>
+        
+        <div>
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" required>
+        </div>
+        
+        <button type="submit">Add Product</button>
+    </form>
+    
+    <div id="response">
+        <h3>Server Response:</h3>
+        <pre id="responseData"></pre>
+    </div>
+    
+    <script>
+        // Get the form element
+        const form = document.getElementById('productForm');
+        
+        // Add form submit event listener
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                price: document.getElementById('price').value,
+                description: document.getElementById('description').value
+            };
+            
+            try {
+                // Send POST request using Axios
+                const response = await axios.post('/api/products', formData);
+                
+                // Display the response
+                document.getElementById('response').style.display = 'block';
+                document.getElementById('responseData').textContent = JSON.stringify(response.data, null, 2);
+                
+                // Optional: Clear the form
+                form.reset();
+                
+            } catch (error) {
+                console.error('Error adding product:', error);
+                alert('Failed to add product. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>
